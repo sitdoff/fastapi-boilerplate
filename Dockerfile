@@ -13,7 +13,7 @@ FROM base AS builder
 RUN pip install --no-cache-dir "poetry==$POETRY_VERSION"
 WORKDIR /app
 COPY . .
-RUN poetry config virtualenvs.create false \
+RUN poetry config virtualenvs.in-project true \
     && poetry install --no-root \
     && chmod +x entrypoint.sh wait-for-it.sh
 
@@ -21,5 +21,5 @@ RUN poetry config virtualenvs.create false \
 FROM base AS final
 WORKDIR /app
 COPY --from=builder /app /app
-COPY --from=builder /usr/local/lib/python3.13/site-packages /usr/local/lib/python3.13/site-packages
-COPY --from=builder /usr/local/bin /usr/local/bin
+ENV PATH=".venv/bin:$PATH"
+
