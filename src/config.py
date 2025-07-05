@@ -2,12 +2,22 @@ from pydantic import BaseModel, PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+class AppSettings(BaseModel):
+    """
+    Настройки приложения.
+    """
+
+    app_prefix: str = "/example-app"
+    router_prefix: str = "/example-router"
+
+
 class ApiSettings(BaseModel):
     """
     Настройки API.
     """
 
-    api_prefix: str = "from .env"
+    api_prefix: str = "/api"
+    v1_prefix: str = "/v1"
 
 
 class DatabaseSettings(BaseModel):
@@ -51,6 +61,7 @@ class Settings(BaseSettings):
 
     api: ApiSettings = ApiSettings()
     db: DatabaseSettings = DatabaseSettings()
+    example_app: AppSettings = AppSettings()
 
     model_config = SettingsConfigDict(
         env_file=(".env.example", ".env"),
