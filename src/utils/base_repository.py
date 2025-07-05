@@ -2,10 +2,16 @@ from abc import ABC, abstractmethod
 
 
 class AbstractRepository(ABC):
+
     @abstractmethod
     async def save(self):
-        raise NotImplementedError
+        pass
 
     @abstractmethod
     async def get_all(self):
-        raise NotImplementedError
+        pass
+
+
+class BaseRepository(AbstractRepository):
+    def __init__(self, model):
+        self.model = model

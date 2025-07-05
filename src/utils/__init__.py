@@ -1,1 +1,1 @@
-from src.utils.repository import AbstractRepository
+from src.utils.base_repository import BaseRepository
