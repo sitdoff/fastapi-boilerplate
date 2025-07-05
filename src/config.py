@@ -2,7 +2,7 @@ from pydantic import BaseModel, PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-class AppSettings(BaseModel):
+class ExampleAppSettings(BaseModel):
     """
     Настройки приложения.
     """
@@ -26,7 +26,7 @@ class DatabaseSettings(BaseModel):
     """
 
     host: str = "from .env"
-    port: str = "from .env"
+    port: int = 0000
     name: str = "from .env"
     user: str = "from .env"
     password: str = "from .env"
@@ -59,9 +59,11 @@ class Settings(BaseSettings):
     Объедененные настройки.
     """
 
+    app_name: str
+    app_port: int
     api: ApiSettings = ApiSettings()
     db: DatabaseSettings = DatabaseSettings()
-    example_app: AppSettings = AppSettings()
+    example_app: ExampleAppSettings = ExampleAppSettings()
 
     model_config = SettingsConfigDict(
         env_file=(".env.example", ".env"),
