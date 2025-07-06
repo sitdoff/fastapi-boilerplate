@@ -7,7 +7,7 @@ class ExampleAppSettings(BaseModel):
     Настройки приложения.
     """
 
-    app_prefix: str = "/example-app"
+    app_prefix: str = "/example-domain"
     router_prefix: str = "/example-router"
 
 
