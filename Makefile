@@ -28,3 +28,6 @@ postgres:
 		${ENV_FILE} \
 		${POSTGRES_COMPOSE}\
 		up
+
+logs:
+	docker logs boilerplate-app -f
