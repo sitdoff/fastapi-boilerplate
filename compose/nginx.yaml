@@ -2,8 +2,9 @@ services:
   nginx:
     build:
       context: ..
-      dockerfile: nginx.Dockerfile
-    container_name: nginx
+      dockerfile: ./compose/dockerfiles/nginx.Dockerfile
+    container_name: boilerplate-nginx
+    restart: always
     ports:
       - 8000:80
     depends_on:
