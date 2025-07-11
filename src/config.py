@@ -48,9 +48,7 @@ class DatabaseSettings(BaseModel):
         Создаёт url для подключения к базе данных.
         """
         return str(
-            PostgresDsn(
-                f"postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.name}"
-            ),
+            PostgresDsn(f"postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.name}"),
         )
 
 
@@ -60,7 +58,6 @@ class Settings(BaseSettings):
     """
 
     app_name: str
-    app_container_name: str
     app_port: int
     api: ApiSettings = ApiSettings()
     db: DatabaseSettings = DatabaseSettings()
