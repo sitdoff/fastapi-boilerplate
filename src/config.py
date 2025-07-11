@@ -60,6 +60,7 @@ class Settings(BaseSettings):
     """
 
     app_name: str
+    app_container_name: str
     app_port: int
     api: ApiSettings = ApiSettings()
     db: DatabaseSettings = DatabaseSettings()
